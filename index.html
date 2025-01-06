@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Hariom Dangi - Full Stack Web Developer">
+    <meta name="keywords" content="Hariom Dangi, Full Stack Developer, MERN Developer, Web Development">
+    <title>Hariom Dangi - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <header>
+        <h1>Hariom Dangi</h1>
+        <p>Full Stack Web Developer | MERN Stack Specialist</p>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about" class="section">
+        <img src="./background.png" alt="Hariom Dangi">
+        <h2>About Me</h2>
+        <p>Hello! I am Hariom Dangi, a passionate Full Stack Developer specializing in the MERN stack. I have a strong foundation in web development, and I love building efficient and scalable web applications.</p>
+    </section>
+
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>React.js, Node.js, Express.js</li>
+            <li>MongoDB, SQL</li>
+            <li>Version Control (Git, GitHub)</li>
+            <li>Responsive Web Design</li>
+        </ul>
+    </section>
+
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Portfolio Website</h3>
+            <p>A personal portfolio website showcasing my skills, projects, and achievements.</p>
+        </div>
+        <div class="project">
+            <h3>Face Recognition System</h3>
+            <p>A computer vision project utilizing advanced techniques for face recognition.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Me</h2>
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+            <button type="submit">Submit</button>
+        </form>
+        
+        <div class="social-media">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <div class="show">
+             <button onclick="show()">Show btn</button>
+        </div>
+        
+
+    <footer>
+        <p>&copy; 2024 Hariom Dangi | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p>Connect with me on <a href="https://www.linkedin.com/in/hariom-dangi-2a5a51325" target="_blank">LinkedIn</a></p>
+    </footer>
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    message: document.getElementById('message').value,
+                };
+        
+                try {
+                    const response = await fetch('http://localhost:5000/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData),
+                    });
+                    const result = await response.json();
+                    alert(result.message);
+                } catch (error) {
+                    alert('Error submitting form. Please try again.');
+                }
+            });
+            document.getElementById('.show').addEventListener('fetch', async(a)=>{
+                a.preventDefault();
+                const response = await fetch('http://localhost:5000/fetch',{
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' },
+                
+                });
+                
+                const data = await response.json();
+                console.log(data);
+            })
+        </script>
+        
+        <script src="./app.js" type="text/javascript"></script>
+</body>
+</html>  

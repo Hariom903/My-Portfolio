@@ -1,0 +1,20 @@
+{
+  "name": "my-portfolio",
+  "version": "1.0.0",
+  "main": "app.js",
+  
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "Hariom Dangi ",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.2"
+  }
+}
